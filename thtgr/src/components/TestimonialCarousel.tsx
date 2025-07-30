@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 const testimonials = [
   {
@@ -38,9 +38,13 @@ const testimonials = [
 export default function TestimonialCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const startInterval = useCallback(() => {
-    return setInterval(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    intervalRef.current = setInterval(() => {
       setIsTransitioning(true);
       setTimeout(() => {
         setCurrentIndex((prevIndex) => 
@@ -52,8 +56,12 @@ export default function TestimonialCarousel() {
   }, []);
 
   useEffect(() => {
-    const timer = startInterval();
-    return () => clearInterval(timer);
+    startInterval();
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, [startInterval]);
 
   const handleChange = (newIndex: number) => {
@@ -64,8 +72,7 @@ export default function TestimonialCarousel() {
     }, 300);
     
     // Reset the interval
-    const timer = startInterval();
-    return () => clearInterval(timer);
+    startInterval();
   };
 
   const handlePrevious = () => {
@@ -140,4 +147,4 @@ export default function TestimonialCarousel() {
       </div>
     </div>
   );
-} 
+}  

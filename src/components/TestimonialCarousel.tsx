@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 
 const testimonials = [
   {
@@ -71,7 +71,6 @@ export default function TestimonialCarousel() {
       setIsTransitioning(false);
     }, 300);
     
-    // Reset the interval
     startInterval();
   };
 
@@ -97,7 +96,6 @@ export default function TestimonialCarousel() {
         </div>
       </div>
       
-      {/* Navigation Arrows */}
       <button 
         onClick={handlePrevious}
         className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 bg-white p-2 rounded-full shadow-lg hover:bg-gray-50 transition-colors"
@@ -130,7 +128,6 @@ export default function TestimonialCarousel() {
         </svg>
       </button>
 
-      {/* Dots Indicator */}
       <div className="flex justify-center gap-2 mt-6">
         {testimonials.map((_, index) => (
           <button
@@ -147,4 +144,4 @@ export default function TestimonialCarousel() {
       </div>
     </div>
   );
-}    
+} 

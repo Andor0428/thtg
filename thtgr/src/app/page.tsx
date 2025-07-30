@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import JobList from '@/components/JobList';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
 import ApplicationForm from '@/components/ApplicationForm';
@@ -20,7 +19,7 @@ export default function Home() {
               Your Premier Partner for Specialised Recruitment
             </h1>
             <p className="text-lg md:text-xl mb-8 opacity-90">
-              London's Leading Recruitment Agency, Dedicated to Candidates First
+              London&apos;s Leading Recruitment Agency, Dedicated to Candidates First
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/jobs" className="btn-primary bg-white hover:bg-white/90 text-[#2ab0b4]">

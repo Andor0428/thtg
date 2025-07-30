@@ -10,7 +10,7 @@ const jobCategories = {
     'Bartender',
     'Sommelier',
     'Restaurant Manager',
-    'Maître d\'',
+    'Maître d&apos;',
   ],
   'Back of House': [
     'Chef de Partie',
@@ -405,4 +405,4 @@ export default function ApplicationForm({ isOpen, onClose }: { isOpen: boolean; 
       </div>
     </Dialog>
   );
-} 
+}  
